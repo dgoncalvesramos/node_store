@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps</title>
+  <style>
+    /* Add your custom styles here */
+  </style>
+</head>
+<body>
+  <h1>App List</h1>
+  <div id="app-list"></div>
+  <script>
+    async function fetchApps() {
+  	const response = await fetch('http://localhost:3000/apps');
+  	const apps = await response.json();
+  	displayApps(apps);
+	}
+
+    function displayApps(apps) {
+      const appList = document.getElementById('app-list');
+      apps.forEach((app) => {
+        const appDiv = document.createElement('div');
+        appDiv.innerHTML = `
+          <h2>${app.name}</h2>
+          <p>Developer: ${app.developer}</p>
+          <p>Description: ${app.description}</p>
+          <p>Category: ${app.category}</p>
+          <p>Downloads: ${app.downloads}</p>
+          <p>Rating: ${app.rating}</p>
+          <p>Price: ${app.price}</p>
+        `;
+        appList.appendChild(appDiv);
+      });
+    }
+
+    fetchApps();
+  </script>
+</body>
+</html>
+
