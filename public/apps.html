@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apps</title>
-  <style>
-    /* Add your custom styles here */
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <h1>App List</h1>
   <div id="app-list"></div>
   <script>
     async function fetchApps() {
-  	const response = await fetch('http://localhost:3000/apps');
-  	const apps = await response.json();
-  	displayApps(apps);
-	}
+      const response = await fetch('http://localhost:3000/apps');
+      const apps = await response.json();
+      displayApps(apps);
+    }
 
     function displayApps(apps) {
       const appList = document.getElementById('app-list');
@@ -39,4 +37,3 @@
   </script>
 </body>
 </html>
-
